@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear Materia</title>
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <%- include("partials/header") -%>
+    
+    <div class="row">
+      <%- include("partials/menu") -%>
+
+      <div class="col-10">
+        <h2 class="mt-4">Crear Materia</h2>
+        <form action="/materias" method="POST">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre de la Materia</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="creditos" class="form-label">Créditos</label>
+            <input type="number" class="form-control" id="creditos" name="creditos" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="area" class="form-label">Área</label>
+            <select class="form-select" id="area" name="area_id" required>
+              <option value="">Selecciona un área</option>
+              <% areas.forEach(area => { %>
+                <option value="<%= area.id %>"><%= area.nombre %></option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear Materia</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include("partials/footer") -%>
+  </div>
+</body>
+</html>
